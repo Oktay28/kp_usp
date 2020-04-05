@@ -8,7 +8,7 @@ const {sequelize} = require("./src/models/db");
 const bodyParser = require("body-parser");
 
 sequelize.authenticate().then(() => {
-    sequelize.sync().catch(err => console.log("sequelize sync error ", error));
+    sequelize.sync({force: true}).catch(err => console.log("sequelize sync error ", error));
 })
 
 const PORT = process.env.PORT || 8080;
@@ -18,6 +18,8 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
+
+app.use("/public", express.static("./public"));
 
 fs.readdirSync("./src/routes").forEach(file => {
     app.use(require(`./src/routes/${file}`)());

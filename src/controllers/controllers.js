@@ -14,4 +14,4 @@ fs
     controllers[controller.name] = controller;
   });
 
-  module.exports = controllers;
+module.exports = controllers;
