@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "postinstall": "move .\\node_modules\\bootstrap .\\public\\plugins\\ && move .\\node_modules\\jquery .\\public\\plugins\\ && move .\\node_modules\\popper.js .\\public\\plugins\\",
+    "postinstall": "move .\\node_modules\\bootstrap .\\public\\plugins && move .\\node_modules\\jquery .\\public\\plugins && move .\\node_modules\\popper.js .\\public\\plugins",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
