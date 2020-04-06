@@ -13,7 +13,7 @@ sequelize.authenticate().then(() => {
 
 const PORT = process.env.PORT || 8080;//port
 
-const app = express();
+const app = express();//code
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("views", "./src/views");
