@@ -11,9 +11,9 @@ sequelize.authenticate().then(() => {
     sequelize.sync({force: true}).catch(err => console.log("sequelize sync error ", error));
 })
 
-const PORT = process.env.PORT || 8080;//port
+const PORT = process.env.PORT || 8080;
 
-const app = express();//code
+const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("views", "./src/views");
