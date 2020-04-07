@@ -1,0 +1,26 @@
+.section{
+    min-height: 700px;
+    
+    clip-path: polygon(0 0, 100% 0, 100% 600px, 0% 100%);
+    
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: 90%;
+    background-attachment: fixed;
+    position: relative;
+
+    &:not(:nth-of-type(1)){
+        margin-top:-100px;
+    }
+
+    &:nth-of-type(1){
+        background-image: url("/public/images/bg-fixed-1.png");
+        z-index: 10;
+        background-color: red;
+    }
+    &:nth-of-type(2){
+        background-image: url("/public/images/bg-fixed-2.png");
+        z-index: 9;
+        background-color: blue;
+    }
+}
