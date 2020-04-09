@@ -1,11 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
     const Phone = sequelize.define("Phone", {
-        brand: {
+        model: {
             type: DataTypes.STRING,
             allowNull: false
         },
         price: {
-            type: DataTypes.DECIMAL
+            type: DataTypes.DECIMAL,
+            allowNull: false
         },
         image: {
             type: DataTypes.STRING,
@@ -20,26 +21,40 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 1
         },
         number_of_cors: {
-            type: DataTypes.TINYINT
+            type: DataTypes.TINYINT,
+            allowNull: false
+        },
+        cpu:{
+            type: DataTypes.STRING,
+            allowNull: false
         },
         screen_size: {
-            type: DataTypes.DECIMAL
+            type: DataTypes.DECIMAL,
+            allowNull: false
+        },
+        color:{
+            type: DataTypes.STRING,
+            allowNull: false
         },
         internal_memory: {
-            type: DataTypes.TINYINT
+            type: DataTypes.TINYINT,
+            allowNull: false
         },
         ram: {
-            type: DataTypes.TINYINT
+            type: DataTypes.TINYINT,
+            allowNull: false
         },
         battery: {
-            type: DataTypes.TINYINT
+            type: DataTypes.TINYINT,
+            allowNull: false
         },
         numbers_of_camera: {
             type: DataTypes.TINYINT,
             defaultValue: 1
         },
         main_camera_resolution: {
-            type: DataTypes.DECIMAL
+            type: DataTypes.DECIMAL,
+            allowNull: false
         }
 
     }, {
@@ -57,11 +72,6 @@ module.exports = (sequelize, DataTypes) => {
         Phone.belongsTo(models.Brand, {
             foreignKey: {
                 name: "brand_id"
-            }
-        })
-        Phone.belongsTo(models.OS, {
-            foreignKey: {
-                name: "os_id"
             }
         })
 
