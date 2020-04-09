@@ -1,12 +1,19 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999;
+}
 .section{
-    min-height: 700px;
+    min-height: 100vh;
     
-    clip-path: polygon(0 0, 100% 0, 100% 600px, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 90vh, 0% 100%);
     
-    background-size: 500px;
+    background-size: 500px, cover;
     background-repeat: no-repeat;
-    background-position: 90%;
-    background-attachment: fixed;
+    background-position: 95%, 0;
+    background-attachment: fixed, scroll;
     position: relative;
 
     &:not(:nth-of-type(1)){
@@ -14,13 +21,23 @@
     }
 
     &:nth-of-type(1){
-        background-image: url("/public/images/bg-fixed-1.png");
+        background-image: url("/public/images/bg-fixed-4.png"), url("/public/images/section-bg-4.jpg");
         z-index: 10;
-        background-color: red;
     }
     &:nth-of-type(2){
-        background-image: url("/public/images/bg-fixed-2.png");
+        background-image:  url("/public/images/bg-fixed-2.png"), url("/public/images/section-bg-3.jpg");
         z-index: 9;
-        background-color: blue;
     }
+    &:nth-of-type(3){
+        background-image:  url("/public/images/bg-fixed-3.png"), url("/public/images/section-bg-2.jpg");
+        z-index: 8;
+    }
+    &:nth-of-type(4){
+        background-image:  url("/public/images/bg-fixed-1.png"), url("/public/images/section-bg.jpg");
+        z-index: 7;
+    }
+}
+
+main{
+    margin-top: 100px;
 }
