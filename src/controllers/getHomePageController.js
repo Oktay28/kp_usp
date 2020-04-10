@@ -1,7 +1,7 @@
 module.exports = () =>{
 
     const getHomePageController = (req, res) => {
-        res.render("index");
+        res.render("front/index");
     }
 
     return getHomePageController;

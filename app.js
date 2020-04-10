@@ -21,9 +21,12 @@ app.set("view engine", "ejs");
 
 app.use("/public", express.static("./public"));
 
-fs.readdirSync("./src/routes").forEach(file => {
-    app.use(require(`./src/routes/${file}`)());
+["front", "back"].forEach(route => {
+    fs.readdirSync(`./src/routes/${route}`).forEach(file => {
+        app.use(require(`./src/routes/${route}/${file}`)());
+    })
 })
+
 
 app.listen(PORT, () => {
     console.log(`server listening - port ${PORT}`);//comment1

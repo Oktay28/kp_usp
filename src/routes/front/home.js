@@ -1,5 +1,5 @@
 const express = require("express");
-const {getHomePageController} = require("../controllers/controllers");
+const {getHomePageController} = require("../../controllers/controllers");
 const router = express.Router();
 
 module.exports = (options = {}) => {

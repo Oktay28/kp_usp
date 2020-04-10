@@ -1,5 +1,5 @@
 const express = require("express");
-const {getPhonesController, getPhonesFilterController} = require("../controllers/controllers");
+const {getPhonesController, getPhonesFilterController} = require("../../controllers/controllers");
 const router = express.Router();
 
 module.exports = () => {

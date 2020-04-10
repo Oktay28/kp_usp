@@ -1,0 +1,24 @@
+.page-loaders{
+    display: flex;
+    .page-loader{
+        background-color: #343A40;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        margin: 0 5px;
+        border: 1px solid #343A40;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover, &.active{
+            background-color: #ffffff;
+            color: #343434;
+        }
+
+    }
+}

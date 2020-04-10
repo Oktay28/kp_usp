@@ -1,6 +1,6 @@
 module.exports = () => {
     const getPhoneController = (req, res) => {
-        res.render("phone");
+        res.render("front/phone");
     }
 
     return getPhoneController;
