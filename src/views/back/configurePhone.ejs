@@ -1,0 +1,108 @@
+<%- include('./partials/header') %>
+
+<main>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <form action="/" method="POST" class="border rounded p-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="brand">Марка</label>
+                                <select name="brand" id="brand" class="form-control" required> 
+                                    <option></option>
+                                    <option value="1">asd</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="model">Модел</label>
+                                <input type="text" name="model" class="form-control" id="model" required>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="price">Цена (лв.)</label>
+                                <input type="text" name="price" id="price" required class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="sim">Сим слотове</label>
+                                <input type="number" name="sim" id="sim" required value="1" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex align-items-center">
+                            <div class="form-group">
+                                <label for="cores">Брой ядра</label>
+                                <input type="number" name="cores" id="cores" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="cpu">Процесор</label>
+                                <input type="text" name="cpu" id="cpu" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="screen-size">Размер на екрана (inch)</label>
+                                <input type="text" name="screenSize" id="screen-size" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex align-items-center">
+                            <div class="form-group">
+                                <input type="checkbox" name="availability" value="1" checked id="availability">
+                                <label for="availability">В наличност?</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="hdd">Вътрешна памет</label>
+                                <input type="text" name="hdd" id="hdd" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="ram">RAM (GB)</label>
+                                <input type="text" name="ram" id="ram" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="battery">Батерия (mAh)</label>
+                                <input type="number" name="battery" id="battery" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-group">
+                                <label for="color">Цвят</label>
+                                <input type="text" name="color" id="color" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label for="camera-numbers">Брой камери</label>
+                                <input type="number" id="camera-numbers" name="cameraNumbers" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="main-camera">Резолюция на главната камера</label>
+                                <input type="text" name="mainCamera" id="main-camera" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<%- include('./partials/footer') %>
+

@@ -4,7 +4,7 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "postinstall": "move .\\node_modules\\bootstrap .\\public\\plugins && move .\\node_modules\\jquery .\\public\\plugins && move .\\node_modules\\popper.js .\\public\\plugins && move .\\node_modules\\@fortawesome .\\public\\plugins",
+        "postinstall": "mkdir .\\public\\plugins && move .\\node_modules\\bootstrap .\\public\\plugins && move .\\node_modules\\jquery .\\public\\plugins && move .\\node_modules\\popper.js .\\public\\plugins && move .\\node_modules\\@fortawesome .\\public\\plugins && move .\\node_modules\\select2 .\\public\\plugins",
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node app.js"
     },
@@ -23,6 +23,7 @@
         "jquery": "^3.4.1",
         "mysql2": "^2.1.0",
         "popper.js": "^1.16.0",
+        "select2": "^4.0.13",
         "sequelize": "^5.21.6"
     }
 }

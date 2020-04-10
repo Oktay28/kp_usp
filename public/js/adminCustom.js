@@ -3,6 +3,9 @@
 $(function () {
     activateCurrentLink();
 
+    $("#brand").select2({
+        placeholder: "Марка"
+    })
 });
 
 
