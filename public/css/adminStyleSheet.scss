@@ -22,3 +22,30 @@
 
     }
 }
+
+.img-holder{
+    position: relative;
+    &:hover{
+        &::before{
+            content: "×";
+            position: absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-family: "Font Awesome 5 Free";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 50px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+    }
+}
+
+.select2-container{
+    width: 100% !important;
+}

@@ -4,97 +4,136 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-12">
-                <form action="/" method="POST" class="border rounded p-3">
-                    <div class="form-group">
-                        <input type="text" class="form-control">
+                <form method="POST" class="border rounded p-3">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <% var image = phone.image || "/public/images/default-phone-photo.png" %>
+                                <img src="<%= image %>" alt="img" id="front-photo" class="img-fluid">
+                                <input type="hidden" id="front-photo-holder" name="image" value="<%= image %>">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12 d-flex flex-column justify-content-end">
+                            <div class="form-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="front-photo-change">
+                                    <label class="custom-file-label" for="front-photo-change">Добави основна снимка</label>
+                                  </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="brand">Марка</label>
-                                <select name="brand" id="brand" class="form-control" required> 
+                                <select name="brand_id" id="brand" class="form-control" required> 
                                     <option></option>
-                                    <option value="1">asd</option>
+                                    <% brands.forEach(brand => { %>
+                                        <option value="<%= brand.id %>"><%= brand.name %></option>
+                                    <% }); %>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="model">Модел</label>
-                                <input type="text" name="model" class="form-control" id="model" required>
+                                <input type="text" name="model" class="form-control" id="model" required value="<%= phone.model %>">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="price">Цена (лв.)</label>
-                                <input type="text" name="price" id="price" required class="form-control">
+                                <input type="text" name="price" id="price" required class="form-control" value="<%= phone.price %>">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-md-6 col-12">
                             <div class="form-group">
                                 <label for="sim">Сим слотове</label>
-                                <input type="number" name="sim" id="sim" required value="1" class="form-control">
+                                <input type="number" name="sim_slots" id="sim" required value="<%= phone.sim_slots || 1 %>" class="form-control">
                             </div>
                         </div>
-                        <div class="col-3 d-flex align-items-center">
-                            <div class="form-group">
+                        <div class="col-lg-3 col-md-6 col-12 d-flex align-items-center">
+                            <div class="form-group w-100">
                                 <label for="cores">Брой ядра</label>
-                                <input type="number" name="cores" id="cores" class="form-control" required>
+                                <input type="number" name="number_of_cores" id="cores" class="form-control" required value="<%= phone.number_of_cores %>">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label for="cpu">Процесор</label>
-                                <input type="text" name="cpu" id="cpu" class="form-control" required>
+                                <input type="text" name="cpu" id="cpu" class="form-control" required value="<%= phone.cpu %>">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-md-6 col-12">
                             <div class="form-group">
                                 <label for="screen-size">Размер на екрана (inch)</label>
-                                <input type="text" name="screenSize" id="screen-size" class="form-control" required>
+                                <input type="text" name="screen_size" id="screen-size" class="form-control" required value="<%= phone.screen_size %>">
                             </div>
                         </div>
-                        <div class="col-3 d-flex align-items-center">
+                        <div class="col-lg-3 col-md-6 col-12 d-flex align-items-center">
                             <div class="form-group">
-                                <input type="checkbox" name="availability" value="1" checked id="availability">
+                            <input type="checkbox" name="availability" data-a="<%= phone.availability%>" value="1" id="availability" <% if(phone.availability==1 || typeof phone.availability == "undefined") {%> checked <% } %>>
                                 <label for="availability">В наличност?</label>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label for="hdd">Вътрешна памет</label>
-                                <input type="text" name="hdd" id="hdd" class="form-control" required>
+                                <label for="internal-memory">Вътрешна памет</label>
+                                <input type="text" name="internal_memory" id="internal-memory" class="form-control" required value="<%= phone.internal_memory %>">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-md-6 col-12">
                             <div class="form-group">
                                 <label for="ram">RAM (GB)</label>
-                                <input type="text" name="ram" id="ram" class="form-control" required>
+                                <input type="text" name="ram" id="ram" class="form-control" required value="<%= phone.ram %>">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-md-6 col-12">
                             <div class="form-group">
                                 <label for="battery">Батерия (mAh)</label>
-                                <input type="number" name="battery" id="battery" class="form-control" required>
+                                <input type="number" name="battery" id="battery" class="form-control" required value="<%= phone.battery %>">
                             </div>
                         </div>
-                        <div class="col-5">
+                        <div class="col-lg-5 col-md-6 col-12">
                             <div class="form-group">
                                 <label for="color">Цвят</label>
-                                <input type="text" name="color" id="color" class="form-control" required>
+                                <input type="text" name="color" id="color" class="form-control" required value="<%= phone.color %>">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-md-6 col-12">
                             <div class="form-group">
                                 <label for="camera-numbers">Брой камери</label>
-                                <input type="number" id="camera-numbers" name="cameraNumbers" class="form-control" required>
+                                <input type="number" id="camera-numbers" name="numbers_of_camera" class="form-control" required value="<%= phone.numbers_of_camera %>">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-lg-4 col-md-6 col-12">
                             <div class="form-group">
                                 <label for="main-camera">Резолюция на главната камера</label>
-                                <input type="text" name="mainCamera" id="main-camera" class="form-control" required>
+                                <input type="text" name="main_camera_resolution" id="main-camera" class="form-control" required value="<%= phone.main_camera_resolution %>">
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="images">
+                                <label class="custom-file-label" for="images">Добави снимки за галерия</label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="row" id="images-gallery">
+                        <% images.forEach(image => { %>
+                            <div class="col-md-3 col-sm-6 col-12 img-holder mt-4">
+                                <img src="<%= image.name %>" alt="image" class="img-fluid">
+                                <input type="hidden" class="img-ids" name="imageIds[]" value="<%= image.id %>">
+                            </div>
+                       <% }) %>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <button class="btn btn-success" type="submit">
+                                Приложи
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -102,6 +141,20 @@
         </div>
     </div>
 </main>
+
+<template id="img-holder-template">
+    <div class="col-md-3 col-sm-6 col-12 img-holder mt-4">
+        <img src="" alt="" class="img-fluid">
+        <input type="hidden" class="img-url" name="imageUrls[]">
+    </div>
+</template>
+
+
+<% var brandId = phone.brand_id || 0 %>
+<script>
+    const brandId = "<%= brandId %>";
+</script>
+
 
 
 <%- include('./partials/footer') %>

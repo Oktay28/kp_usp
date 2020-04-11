@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TINYINT,
             defaultValue: 1
         },
-        number_of_cors: {
+        number_of_cores: {
             type: DataTypes.TINYINT,
             allowNull: false
         },
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         internal_memory: {
-            type: DataTypes.TINYINT,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         ram: {
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         battery: {
-            type: DataTypes.TINYINT,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         numbers_of_camera: {

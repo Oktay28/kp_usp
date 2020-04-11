@@ -18,35 +18,33 @@
             </div>
           
         </div>
-        <div class="col-12">
+        <div class="col-12 table-responsive">
             <table class="table table-striped mt-4">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">id</th>
+                    <th scope="col">Марка</th>
+                    <th scope="col">Модел</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col">Действие</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  <% phones.forEach(phone => { %>
+                    <tr>
+                      <th scope="row"><%= phone.id %></th>
+                      <td><%= phone["Brand.name"] %></td>
+                      <td><%= phone.model %></td>
+                      <td><%= phone.price %></td>
+                      <td>
+                        <div class="btn-group" role="group" aria-label="Actions">
+                          <button type="button" class="btn btn-primary" onclick="location.href='/admin/phones/edit/<%= phone.id %>'">Редактирай</button>
+                          <button type="button" class="delete-phone btn btn-danger">Изтрий</button>
+                        </div>
+                      </td>
+                    </tr>
+                  <% }) %>
+           
                 </tbody>
               </table>
         </div>

@@ -8,27 +8,22 @@
                 <div class="col-6">
 
                     <div class="phone-left-side">
-                        <img src="/public/sampleImages/big-photo.jpg" alt="phone img" class="w-100">
+                        <img src="<%= phone.image %>" alt="phone img" class="w-100">
                     </div>
 
                 </div>
                 <div class="col-6 d-flex flex-column justify-content-between">
                     <div class="row">
-                        <div class="col-3 mb-2 side-gallery">
-                            <img src="/public/sampleImages/big-photo.jpg" alt="phone img" class="w-100">
-                        </div>
-                        <div class="col-3 mb-2 side-gallery">
-                            <img src="/public/sampleImages/res_beeb2a5b938cd2fc51ad063da79f4321_190x190_418c.jpg"
-                                alt="phone img" class="w-100">
-                        </div>
-                        <div class="col-3 mb-2 side-gallery">
-                            <img src="/public/sampleImages/big-photo.jpg" alt="phone img" class="w-100">
-                        </div>
+                        <% images.forEach(image => { %>
+                            <div class="col-3 mb-2 side-gallery">
+                                <img src="<%= image.name %>" alt="phone img" class="w-100">
+                            </div>
+                        <% }) %>
 
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button class="btn btn-success" id="add-to-cart" onclick="location.href='/add-to-cart/1'">
+                            <button class="btn btn-success" id="add-to-cart" onclick="location.href='/add-to-cart/<%= phone.id %>'">
                                 Добави в количката
                             </button>
                         </div>
@@ -39,17 +34,22 @@
             <div class="row">
                 <div class="col-12 text-center mt-3">
                     <h2>
-                        Смартфон Huawei P Smart Z, Dual SIM, 64GB, 4G, Midnight Black
+                        <%= phone.model %>
                     </h2>
                     <div class="d-flex justify-content-end align-items-center">
-                        <span class="bg-success rounded px-2 py-1 text-white font-weight-bold">
-                            В наличност
-                        </span>
-                        <span class="bg-danger rounded px-2 py-1 text-white font-weight-bold">
-                            Няма в наличност
-                        </span>
+                        <% if(phone.availability){ %>
+                            <span class="bg-primary rounded px-2 py-1 text-white font-weight-bold">
+                                В наличност
+                            </span>
+                        <% } else { %>
+                            <span class="bg-danger rounded px-2 py-1 text-white font-weight-bold">
+                                Няма в наличност
+                            </span>
+                        <% } %>
+                       
+                        
                         <span class="ml-3 text-danger font-weight-bold text-right" style="font-size: 24px;">
-                            123
+                            <%= phone.price %> лв.
                         </span>
 
                     </div>
@@ -71,57 +71,57 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 table-responsive">
                             <table class="table table-striped table-dark table-hover">
 
                                 <tbody>
                                     <tr>
+                                        <th scope="row">Марка</th>
+                                        <td><%= phone["Brand.name"] %></td>
+                                    </tr>
+                                    <tr>
                                         <th scope="row">Цена</th>
-                                        <td>Mark</td>
+                                        <td><%= phone.price %> лв.</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">SIM слотове</th>
-                                        <td>Mark</td>
+                                        <td><%= phone.sim_slots %></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Брой ядра</th>
-                                        <td>Larry</td>
+                                        <td><%= phone.number_of_cores %></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Модел процесор</th>
-                                        <td>Larry</td>
+                                        <td><%= phone.cpu %></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Цвят</th>
-                                        <td>Larry</td>
+                                        <td><%= phone.color %></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Размери</th>
-                                        <td>Larry</td>
+                                        <th scope="row">Размери екран (inch)</th>
+                                        <td><%= phone.screen_size %></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Размери екран</th>
-                                        <td>Larry</td>
+                                        <th scope="row">Вътрешна памет (GB)</th>
+                                        <td><%= phone.internal_memory %></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Вътрешна памет</th>
-                                        <td>Larry</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">RAM памет</th>
-                                        <td>Larry</td>
+                                        <th scope="row">RAM памет (GB)</th>
+                                        <td><%= phone.ram %></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Брой камери</th>
-                                        <td>Larry</td>
+                                        <td><%= phone.numbers_of_camera %></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Резолюция на основна камера</th>
-                                        <td>Larry</td>
+                                        <th scope="row">Резолюция на основна камера (MP)</th>
+                                        <td><%= phone.main_camera_resolution %></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Капацитет батерия</th>
-                                        <td>Larry</td>
+                                        <th scope="row">Капацитет батерия (mAh)</th>
+                                        <td><%= phone.battery %></td>
                                     </tr>
 
                                 </tbody>

@@ -6,9 +6,10 @@ const fs = require("fs");
 const path = require("path");
 const {sequelize} = require("./src/models/db");
 const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
 
 sequelize.authenticate().then(() => {
-    sequelize.sync({force: true}).catch(err => console.log("sequelize sync error ", error));
+    sequelize.sync().catch(err => console.log("sequelize sync error ", error));
 })
 
 const PORT = process.env.PORT || 8080; //port
@@ -27,7 +28,37 @@ app.use("/public", express.static("./public"));
     })
 })
 
+app.use(fileUpload());
+
+app.post("/upload", (req, res) => {
+
+    let url = `public/images/phones/`;
+
+    if (!fs.existsSync(url)){
+        fs.mkdirSync(url);
+    }
+    
+    url += req.files.media.name;
+
+    req.files.media.mv(url, (error)=>{
+        if(error) console.log("file can not be uploaded!");
+        else console.log("file successfully uploaded!");
+    })
+
+    res.end(`/${url}`);
+})
+
 
 app.listen(PORT, () => {
     console.log(`server listening - port ${PORT}`);//comment1
 })
+
+
+
+    const {Brand} = require("./src/models/db");
+    Brand.findOne().then((b)=>{
+        if(b == null){
+            const brands = require("./public/js/brands.json");
+            Brand.bulkCreate(brands.map(brand => ({name: brand})));
+        }
+    })

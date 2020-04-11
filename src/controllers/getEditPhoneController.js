@@ -1,21 +1,29 @@
-const {Phone, Image, Brand} = require("../models/db");
+const {Phone, Brand, Image} = require("../models/db");
+
 module.exports = (options = {}) => {
-    const getPhoneController = async (req, res) => {
+    const getEditPhoneController = async (req, res) => {
+
+
+        options.brands = await Brand.findAll({
+            raw: true
+        })
+
         options.phone = await Phone.findOne({
             where: {
                 id: req.params.id
             },
-            include: Brand,
             raw: true
         })
+
         options.images = await Image.findAll({
             where: {
                 phone_id: req.params.id
-            },
-            raw: true
+            }
         })
-        res.render("front/phone", options);
+
+        res.render("back/configurePhone", options);
+
     }
 
-    return getPhoneController;
+    return getEditPhoneController;
 }

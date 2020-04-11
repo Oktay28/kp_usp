@@ -5,25 +5,24 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-    
-                    <div class="phone-box text-center">
-                        <a href="/phone/1">
-                            <img src="/public/sampleImages/res_beeb2a5b938cd2fc51ad063da79f4321_190x190_418c.jpg" alt="phone image" class="img-fluid">
-                            <div class="text-dark mb-3">
-                                Смартфон Samsung Galaxy A40, Dual SIM, 64GB, 4G, Blue
-                            </div>
-                            <div class="text-danger font-weight-bold">
-                                <span>
-                                    1090.90
-                                </span>
-                                 лв.
-                            </div>
-                        </a>
+                <% phones.forEach(phone => { %>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+                        <div class="phone-box text-center">
+                            <a href="/phone/<%= phone.id %>">
+                                <img src="<%= phone.image %>" alt="phone image" class="img-fluid">
+                                <div class="text-dark mb-3">
+                                    <%= phone.model %>
+                                </div>
+                                <div class="text-danger font-weight-bold">
+                                    <span>
+                                        <%= phone.price %>
+                                    </span>
+                                     лв.
+                                </div>
+                            </a>
+                        </div>
                     </div>
-    
-                </div>
-
+                <% }) %>
             </div>
         </div>
     </main>

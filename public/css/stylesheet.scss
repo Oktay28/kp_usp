@@ -127,6 +127,12 @@ main{
     }
 }
 
+.phone-box{
+    img{
+        max-height: 200px;
+    }
+}
+
 @media all and (max-width: $br-lg - 1px){
     #main .section{
         &::before{
