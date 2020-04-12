@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="/public/plugins/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/plugins/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/public/plugins/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="/public/css/stylesheet.min.css">
 </head>
 <body>
@@ -47,7 +48,33 @@
               </button>
             </div>
             <div class="modal-body">
-              <div>
+                  <div>
+
+                    <% cartPhones.forEach(phone => { %>
+                      <div class="row align-items-center mb-2 phone-cart-row">
+                        <div class="col-4 col-md-2 order-1">
+                          <img src="<%= phone.image %>" alt="phone photo" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 col-12 order-4 order-md-2">
+                          <%= phone.model %>
+                        </div>
+                        <div class="col-4 col-md-2 text-danger font-weight-bold order-2 order-md-3" style="font-size: 20px">
+                          <%= phone.price %> лв.
+                        </div>
+                        <div class="col-4 col-md-2 order-3 order-md-4">
+                          <button class="btn btn-light remove-from-cart">
+                            &times
+                          </button>
+                          <div class="id-holder d-none">
+                            <%= phone.id %>
+                          </div>
+                        </div>
+                      </div>
+                    <% }) %>
+                
+                  </div>
+
+              <div id="cart-empty" class="<% if(cartPhones.length){%>cart-empty<%}%>">
                 <h2>
                   Нямате добавени продукти.
                 </h2>
@@ -56,24 +83,6 @@
                 </a>
               </div>
 
-              <div>
-                <div class="row align-items-center mb-2">
-                  <div class="col-4 col-md-2 order-1">
-                    <img src="/public/sampleImages/big-photo.jpg" alt="phone photo" class="img-fluid">
-                  </div>
-                  <div class="col-md-6 col-12 order-4 order-md-2">
-                    Смартфон Huawei P Smart Z, Dual SIM, 64GB, 4G, Midnight Black
-                  </div>
-                  <div class="col-4 col-md-2 text-danger font-weight-bold order-2 order-md-3" style="font-size: 20px">
-                    129lv
-                  </div>
-                  <div class="col-4 col-md-2 order-3 order-md-4">
-                    <button class="btn btn-light remove-from-cart">
-                      &times
-                    </button>
-                  </div>
-                </div>
-              </div>
           
             </div>
             <div class="modal-footer">

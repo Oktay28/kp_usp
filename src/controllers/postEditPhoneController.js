@@ -3,7 +3,6 @@ const Op = Sequelize.Op;
 
 module.exports = (options = {}) => {
     const postEditPhoneController = async (req, res) => {
-        console.log(req.body);
         let {imageUrls, imageIds} = req.body;
         delete req.body.imageUrls;
         delete req.body.imageIds;
@@ -19,9 +18,6 @@ module.exports = (options = {}) => {
             phone_id: req.params.id
         })) || null;
 
-        console.log(imageIds);
-        console.log(req.params.id);
-
         if(imageIds){
             await Image.destroy({
                 where: {
@@ -36,8 +32,6 @@ module.exports = (options = {}) => {
         }
 
         await Image.bulkCreate(images);
-
-        console.log("before redirect");
 
         res.redirect("/admin/phones");
 

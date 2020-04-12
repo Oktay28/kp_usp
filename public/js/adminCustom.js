@@ -30,6 +30,8 @@ $(function () {
 
     $(".delete-phone").click(deletePhone);
 
+    
+
 });
 
 function deletePhone(){

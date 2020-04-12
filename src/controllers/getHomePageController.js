@@ -1,7 +1,8 @@
-module.exports = () =>{
+module.exports = (options={}) =>{
 
     const getHomePageController = (req, res) => {
-        res.render("front/index");
+        options.cartPhones = res.locals.cartPhones || [];
+        res.render("front/index", options);
     }
 
     return getHomePageController;

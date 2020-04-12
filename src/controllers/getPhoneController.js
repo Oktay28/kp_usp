@@ -1,6 +1,7 @@
 const {Phone, Image, Brand} = require("../models/db");
 module.exports = (options = {}) => {
     const getPhoneController = async (req, res) => {
+        options.cartPhones = res.locals.cartPhones || [];
         options.phone = await Phone.findOne({
             where: {
                 id: req.params.id

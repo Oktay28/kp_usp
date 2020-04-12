@@ -4,36 +4,33 @@
     </div>
 
     <div class="mt-4 overflow-hidden text-white px-2">
-        <form method="GET" action="/phones/filter/">
+        <form method="GET" action="/phones">
             <div class="form-group">
                 <h4>Марка</h4>
-                <div>
-                    <input type="checkbox" name="brand" value="1">
-                </div>
-                <div>
-                    <input type="checkbox" name="brand" value="2">
-                </div>
+                <select name="brand_id[]" multiple="multiple" class="brand_id form-control" id="filter-brand">
+                    <option></option>
+                    <% brands.forEach(brand => { %>
+                        <option value="<%= brand.id %>"><%= brand.name %></option>
+                    <% }) %>
+                </select>
             </div>
             <div class="form-group">
-                <h4>Марка</h4>
+                <h4>sim</h4>
                 <div>
-                    <input type="checkbox" name="brand2" value="1">
+                    <input type="radio" name="sim_slots" value="1" class="sim_slots">
                 </div>
                 <div>
-                    <input type="checkbox" name="brand2" value="2">
-                </div>
-            </div>
-            <div class="form-group">
-                <h4>Марка</h4>
-                <div>
-                    <input type="checkbox" name="brand3" value="1">
-                </div>
-                <div>
-                    <input type="checkbox" name="brand3" value="2">
+                    <input type="radio" name="sim_slots" value="2" class="sim_slots">
                 </div>
             </div>
-            <input type="submit">
+            <button type="submit" name="filter" value="1">
+                Търси
+            </button>
         </form>
+
+        <script>
+            const filterData = JSON.parse('<%- JSON.stringify(filterData); %>');
+        </script>
       
 
     </div>
