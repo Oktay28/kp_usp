@@ -89,7 +89,6 @@ module.exports = (sequelize, DataTypes) => {
                     } else {
                         delete phone.where.model;
                     }
-                    console.log("model", phone.where.model)
                     delete phone.where.price_min;
                     delete phone.where.price_max;
                 }
