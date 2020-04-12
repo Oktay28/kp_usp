@@ -2,14 +2,24 @@ const {Phone, Brand } = require("../models/db");
 module.exports = (options={}) => {
 
     const getPhonesController = async (req, res) => {
+        const phonesPerPage = 1;
+        options.page = req.query.page || 1;
+
+        options.pageCount = await Phone.count() / phonesPerPage || 1;
+
+        console.log("path", req.path)
+
+        delete req.query.page;
+
         const searchData = {
             attributes: ["id", "model", "image", "price"],
-            raw: true
+            raw: true,
+            limit: phonesPerPage,
+            offset: (options.page - 1) * phonesPerPage
         };
         if(req.query.filter == 1){
             searchData.where = req.query;
             delete req.query.filter;
-            console.log(searchData);
         }
         options.brands = await Brand.findAll();
         try{

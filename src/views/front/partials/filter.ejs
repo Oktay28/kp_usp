@@ -4,7 +4,7 @@
     </div>
 
     <div class="mt-4 overflow-hidden text-white px-2">
-        <form method="GET" action="/phones">
+        <form method="GET">
             <div class="form-group">
                 <h4>Марка</h4>
                 <select name="brand_id[]" multiple="multiple" class="brand_id form-control" id="filter-brand">
@@ -15,13 +15,30 @@
                 </select>
             </div>
             <div class="form-group">
-                <h4>sim</h4>
+                <h4>Сим слотове</h4>
                 <div>
-                    <input type="radio" name="sim_slots" value="1" class="sim_slots">
+                    <input type="radio" name="sim_slots" value="1" class="sim_slots" id="sim-slot-1">
+                    <label for="sim-slot-1" class="mr-2">1</label>
+                    <input type="radio" name="sim_slots" value="2" class="sim_slots" id="sim-slot-2">
+                    <label for="sim-slot-2">2</label>
                 </div>
-                <div>
-                    <input type="radio" name="sim_slots" value="2" class="sim_slots">
+            </div>
+            <div class="form-group">
+                <h4>Цена (лв.)</h4>
+                <div class="row align-items-center">
+                    <div class="col-5">
+                        <input type="number" name="price_min" class="price_min form-control" placeholder="min">
+                    </div>
+                    <div class="col-2 font-weight-bold text-center" style="font-size: 24px;">-</div>
+                    <div class="col-5">
+                        <input type="number" name="price_max" class="price_max form-control" placeholder="max">
+                    </div>
+                    
                 </div>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="availability" value="1" id="availability" class="availability">
+                <label for="availability">Налични</label>
             </div>
             <button type="submit" name="filter" value="1">
                 Търси

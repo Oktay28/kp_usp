@@ -11,19 +11,19 @@ $(function () {
         placeholder: "Марка"
     })
 
+    pageRedirect();
+
    // document.title = "proba"
    // window.history.pushState({"pageTitle":"probaTitle"},"", '/new/page');
 });
 
 function filterPhones(){
     if(typeof filterData != "undefined"){
-        console.log(filterData);
         filterData.forEach(data => {
             let $fields = $(`.${data[0]}`);
             let type = $fields.eq(0).attr("type");
 
             if(type=="checkbox" || type=="radio"){
-                console.log($fields);
                 if(typeof data[1] != "object") data[1] = [data[1]];
                 $fields.filter((_, input) => {
                     return typeof data[1].find(f => f == $(input).val()) != "undefined";
@@ -36,7 +36,7 @@ function filterPhones(){
                 $fields.eq(0).change();
             }  
             else {
-                $fields.val(data[1]);
+                $fields.eq(0).val(data[1]);
             }
         })
     }
@@ -86,4 +86,15 @@ function changePhonePhoto(){
     $(".side-gallery").click(function(){
         $(".phone-left-side:eq(0) img").attr("src", $(this).find("img").attr("src"));
     })
+}
+
+function pageRedirect(){
+    if(typeof page != "undefined"){
+        let content = ""
+        for (let p = 1; p <= pageCount; p += 1) {
+            content += `<a href="${window.location.href.replace(/page=\d+/, `page=${p}`)}">${p}</a>`;
+        }
+
+        $("#page-redirect").html(content);
+    }
 }

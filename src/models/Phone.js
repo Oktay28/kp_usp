@@ -1,3 +1,4 @@
+const {Op} = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
     const Phone = sequelize.define("Phone", {
         model: {
@@ -60,7 +61,33 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         createdAt: "created_at",
         updatedAt: "updated_at",
-        tableName: "phones"
+        tableName: "phones",
+        hooks: {
+            beforeFind: (phone, options) => {
+                if(typeof phone.where != "undefined"){
+                    let priceMin = phone.where.price_min || 0;
+                    let priceMax = phone.where.price_max || 0;
+                    if(priceMin && priceMax){
+                        phone.where.price = {
+                            [Op.between] : [priceMin, priceMax]
+                        }
+                    }
+                     else if(priceMin){
+                        phone.where.price = {
+                            [Op.gte] : priceMin
+                        }
+                    }
+                    else if(priceMax){
+                        phone.where.price = {
+                            [Op.lte] : priceMax 
+                        }
+                    }
+                    delete phone.where.price_min;
+                    delete phone.where.price_max;
+                }
+                
+            }
+        }
     })
 
     Phone.associate = (models) => {

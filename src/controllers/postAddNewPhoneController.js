@@ -6,6 +6,8 @@ module.exports = (options = {}) => {
         const imageUrls = req.body.imageUrls;
         delete req.body.imageUrls;
 
+        req.body.availability = req.body.availability || 0;
+
         const {id} = {dataValues} = await Phone.create(req.body);
         
         const images = imageUrls.map(image => {

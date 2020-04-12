@@ -7,6 +7,8 @@ module.exports = (options = {}) => {
         delete req.body.imageUrls;
         delete req.body.imageIds;
 
+        req.body.availability = req.body.availability || 0;
+
         await Phone.update(req.body,{
             where: {
                 id: req.params.id
