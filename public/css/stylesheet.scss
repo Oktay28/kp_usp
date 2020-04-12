@@ -1,6 +1,16 @@
 $br-sm: 576px;
 $br-lg: 992px;
 
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer{
+    margin-top: auto;
+}
+
 .navbar{
     position: fixed;
     top: 0;
@@ -69,6 +79,16 @@ $br-lg: 992px;
             background-image:  url("/public/images/bg-fixed-1.png");
         }
     }
+
+    .box{
+        padding: 50px;
+        border-radius: 24px;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: #ffffff;
+        font-size: 70px;
+        text-align: center;
+        font-weight: bold;
+    }
 }
 
 main{
@@ -134,6 +154,33 @@ main{
 .phone-box{
     img{
         max-height: 200px;
+    }
+}
+
+.page-loaders{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+    a{
+        background-color: #343A40;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        margin: 0 5px;
+        border: 1px solid #343A40;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover, &.active{
+            background-color: #ffffff;
+            color: #343434;
+        }
+
     }
 }
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const {
-    getAdminPhonesController,
+    getPhonesController,
     getAddNewPhoneController,
     postAddNewPhoneController,
     getEditPhoneController,
@@ -10,7 +10,7 @@ const {
 const router = express.Router();
 
 module.exports = (options={}) => {
-    router.get("/admin/phones", getAdminPhonesController)
+    router.get("/admin/phones", getPhonesController)
     router.get("/admin/phones/add", getAddNewPhoneController);
     router.post("/admin/phones/add", postAddNewPhoneController);
     router.get("/admin/phones/edit/:id", getEditPhoneController);

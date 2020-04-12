@@ -82,6 +82,14 @@ module.exports = (sequelize, DataTypes) => {
                             [Op.lte] : priceMax 
                         }
                     }
+                    if(phone.where.model){
+                        phone.where.model = {
+                            [Op.regexp]: `${phone.where.model}`
+                        }
+                    } else {
+                        delete phone.where.model;
+                    }
+                    console.log("model", phone.where.model)
                     delete phone.where.price_min;
                     delete phone.where.price_max;
                 }

@@ -1,6 +1,8 @@
 .page-loaders{
     display: flex;
-    .page-loader{
+    justify-content: flex-end;
+    margin-bottom: 50px;
+    a{
         background-color: #343A40;
         display: inline-block;
         width: 30px;

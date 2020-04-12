@@ -5,9 +5,9 @@
         <div class="col-12">
             <div class="row align-items-center mt-3">
                 <div class="col-12 col-md-6">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <form class="form-inline my-2 my-lg-0" method="GET">
+                        <input class="form-control mr-sm-2 model" type="text" placeholder="Модел" aria-label="Search" name="model">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="filter" value="1">Търси</button>
                       </form>
                 </div>
                 <div class="col-12 col-md-6 text-left text-md-right">
@@ -50,15 +50,21 @@
         </div>
     </div>
 
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="page-loaders">
-                <a href="#" class="page-loader">1</a>
-                <a href="#" class="page-loader active">2</a>
-            </div>
-        </div>
-    </div>
+    <div class="container-fluid">
+      <div class="row mt-4">
+          <div class="col-12">
+              <div class="page-loaders" id="page-redirect">
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
+
+<script>
+  const filterData = JSON.parse('<%- JSON.stringify(filterData); %>');
+  const pageCount = "<%= pageCount %>" || 1;
+    const page = "<%= page %>" || 1;
+</script>
 
 
 <%- include('./partials/footer') %>

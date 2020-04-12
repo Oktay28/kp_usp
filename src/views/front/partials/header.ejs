@@ -28,9 +28,6 @@
             <li class="nav-item">
               <a class="nav-link" href="/phones">Phones</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About us</a>
-            </li>
          <li>
           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cart-modal">Количка</button>
          </li>
@@ -48,46 +45,11 @@
               </button>
             </div>
             <div class="modal-body">
-                  <div>
-
-                    <% cartPhones.forEach(phone => { %>
-                      <div class="row align-items-center mb-2 phone-cart-row">
-                        <div class="col-4 col-md-2 order-1">
-                          <img src="<%= phone.image %>" alt="phone photo" class="img-fluid">
-                        </div>
-                        <div class="col-md-6 col-12 order-4 order-md-2">
-                          <%= phone.model %>
-                        </div>
-                        <div class="col-4 col-md-2 text-danger font-weight-bold order-2 order-md-3" style="font-size: 20px">
-                          <%= phone.price %> лв.
-                        </div>
-                        <div class="col-4 col-md-2 order-3 order-md-4">
-                          <button class="btn btn-light remove-from-cart">
-                            &times
-                          </button>
-                          <div class="id-holder d-none">
-                            <%= phone.id %>
-                          </div>
-                        </div>
-                      </div>
-                    <% }) %>
-                
-                  </div>
-
-              <div id="cart-empty" class="<% if(cartPhones.length){%>cart-empty<%}%>">
-                <h2>
-                  Нямате добавени продукти.
-                </h2>
-                <a href="/phones">
-                  Добавете
-                </a>
-              </div>
-
-          
+              <%- include("./cartInside", {cartPhones}) %>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Затвори</button>
-              <button type="button" class="btn btn-primary">Виж количката</button>
+              <button type="button" class="btn btn-primary" onclick="location.href='/cart'">Виж количката</button>
             </div>
           </div>
         </div>

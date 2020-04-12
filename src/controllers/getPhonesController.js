@@ -2,12 +2,8 @@ const {Phone, Brand } = require("../models/db");
 module.exports = (options={}) => {
 
     const getPhonesController = async (req, res) => {
-        const phonesPerPage = 1;
+        const phonesPerPage = 16;
         options.page = req.query.page || 1;
-
-        options.pageCount = await Phone.count() / phonesPerPage || 1;
-
-        console.log("path", req.path)
 
         delete req.query.page;
 
@@ -17,6 +13,14 @@ module.exports = (options={}) => {
             limit: phonesPerPage,
             offset: (options.page - 1) * phonesPerPage
         };
+        let renderFile;
+        if(req.originalUrl.indexOf("admin") == -1){
+            renderFile = "front/phones";
+        }
+        else {
+            searchData.include = Brand
+            renderFile = "back/phones";
+        }
         if(req.query.filter == 1){
             searchData.where = req.query;
             delete req.query.filter;
@@ -24,13 +28,26 @@ module.exports = (options={}) => {
         options.brands = await Brand.findAll();
         try{
             options.phones = await Phone.findAll(searchData);
-        } catch {
-            options.phones = await Phone.findAll();
+            let p = await Phone.findAll({
+                where: searchData.where,
+                raw: true,
+                attributes: ["id"]
+            })
+            options.pageCount = Math.ceil(p.length / phonesPerPage) || 1;
+            
+        } catch (e) {
+            options.phones = await Phone.findAll({
+                limit: phonesPerPage,
+                raw: true,
+                attributes: ["id", "model", "image", "price"]
+            });
+            options.pageCount = Math.ceil(await Phone.count() / phonesPerPage) || 1;
         }
+
         options.cartPhones = res.locals.cartPhones || [];
         
         options.filterData = Object.entries(req.query) || [];
-        res.render("front/phones", options);
+        res.render(renderFile, options);
     }
 
     return getPhonesController;
