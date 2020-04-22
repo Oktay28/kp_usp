@@ -1,5 +1,8 @@
 node_modules
 config
 .env
-/public/plugins
+/public/plugins/*
 /public/images/phones
+
+
+!/public/plugins/txt.txt
