@@ -12,16 +12,18 @@ const session = require("express-session");
 const SessionStore = require('express-session-sequelize')(session.Store);
 
 sequelize.authenticate().then(() => {
-    sequelize.sync().catch(err => console.log("sequelize sync error ", error));
+    sequelize.sync().then(function(){
+        Brand.findOne().then((b) => {
+            if (b == null) {
+                const brands = require("./public/js/brands.json");
+                Brand.bulkCreate(brands.map(brand => ({
+                    name: brand
+                })));
+            }
+        })
+    }).catch(err => console.log("sequelize sync error ", error));
     
-    Brand.findOne().then((b) => {
-        if (b == null) {
-            const brands = require("./public/js/brands.json");
-            Brand.bulkCreate(brands.map(brand => ({
-                name: brand
-            })));
-        }
-    })
+
 })
 
 const sequelizeSessionStore = new SessionStore({
