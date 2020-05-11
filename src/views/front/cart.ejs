@@ -3,13 +3,13 @@
 <body>
     <div id="main">
       <div class="container" style="padding:100px 0;">
-          <div class="row">
+          <div class="row no-gutters">
               <div class="col-12">
                 <%- include("./partials/cartInside", {cartPhones}) %>
               </div>
           </div>
           <% if(cartPhones.length){ %>
-               <div class="row mt-5">
+               <div class="row mt-5 no-gutters px-3">
               <div class="col-12 d-flex justify-content-end">
                   <form action="/cart" method="POST">
                       <button type="submit" class="btn btn-success">

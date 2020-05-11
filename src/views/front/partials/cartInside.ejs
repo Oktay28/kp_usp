@@ -4,7 +4,7 @@
     <div>
 
       <% cartPhones.forEach(phone => { %>
-        <div class="row align-items-center mb-2 phone-cart-row">
+        <div class="row align-items-center mb-2 phone-cart-row no-gutters px-3">
           <div class="col-4 col-md-2 order-1">
             <img src="<%= phone.image %>" alt="phone photo" class="img-fluid">
           </div>
@@ -27,7 +27,7 @@
   
     </div>
 
-<div id="cart-empty" class="<% if(cartPhones.length){%>cart-empty<%}%>">
+<div id="cart-empty" class="<% if(cartPhones.length){%>cart-empty<%}%> text-center">
   <h2>
     Нямате добавени продукти.
   </h2>

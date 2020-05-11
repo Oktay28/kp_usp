@@ -1,6 +1,8 @@
+const { Phone } = require("../models/db");
 module.exports = (options={}) => {
-    const getDashboardController = (req, res) => {
-        res.render("back/dashboard");
+    const getDashboardController = async (req, res) => {
+        options.amountPhones = await Phone.count();
+        res.render("back/dashboard", options);
     }
 
     return getDashboardController;

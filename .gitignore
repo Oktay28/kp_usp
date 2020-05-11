@@ -3,6 +3,4 @@ config
 .env
 /public/plugins/*
 
-
-
 !/public/plugins/txt.txt
